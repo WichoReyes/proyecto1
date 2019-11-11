@@ -3,19 +3,18 @@
 #include <iostream>
 struct Nota
 {
-    float notas[5];
-    int duracion[5];
+    float notas[8];
+    int duracion[8];
 };
 int main ()
 {
     BITMAP *buffer,*bmp,*bmp2,*notas;
-    float x;
     struct Nota c1;
-    int i=0;
-    for(i=0;i<5;i++){
+    int i=0,j=100;
+    for(i=0;i<8;i++){
     printf("\nIngresar frecuencia: ");
     scanf("%f",&c1.notas[i]);
-    printf("\nIngresar frecuencia: ");
+    printf("\nIngresar duracion: ");
     scanf("%d",&c1.duracion[i]);
     }
     allegro_init();
@@ -35,9 +34,38 @@ int main ()
     clear_to_color(buffer, 0x999999);
     blit(bmp,buffer,0,0,0,0,1000,667);
     blit(bmp2,buffer,-25,-70,0,0,500,375);
-    for(i=0;i<5;i++){
-    if(c1.notas[i]>=261.62 && c1.notas[i]<293.664){
-    blit(notas,buffer,0,0,100,170,21,43);
+    for(i=0;i<8;i++){
+    if(c1.notas[i]>=261.6 && c1.notas[i]<293.6){  //do
+    blit(notas,buffer,0,0,j,170,21,43);
+    j=j+30;
+    }
+    else if(c1.notas[i]>=293.6 && c1.notas[i]<329.6){  //re
+    blit(notas,buffer,0,0,j,165,21,43);
+    j=j+30;
+    }
+    else if(c1.notas[i]>=329.6 && c1.notas[i]<349.2){  //mi
+    blit(notas,buffer,0,0,j,160,21,43);
+    j=j+30;
+    }
+    else if(c1.notas[i]>=349.2 && c1.notas[i]<391.9){  //fa
+    blit(notas,buffer,0,0,j,150,21,43);
+    j=j+30;
+    }
+    else if(c1.notas[i]>=391.9 && c1.notas[i]<440){  //sol
+    blit(notas,buffer,0,0,j,140,21,43);
+    j=j+30;
+    }
+    else if(c1.notas[i]>=440 && c1.notas[i]<493.8){  //la
+    blit(notas,buffer,0,0,j,130,21,43);
+    j=j+30;
+    }
+    else if(c1.notas[i]>=493.8 && c1.notas[i]<523.2){  //si
+    blit(notas,buffer,0,0,j,125,21,43);
+    j=j+30;
+    }
+    else if(c1.notas[i]>=523.2){  //do
+    blit(notas,buffer,0,0,j,115,21,43);
+    j=j+30;
     }
     }
     blit(buffer, screen, 0, 0, 0, 0, 1000, 530);
