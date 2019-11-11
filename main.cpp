@@ -3,16 +3,20 @@
 #include <iostream>
 struct Nota
 {
-    float notas[15];
+    float notas[5];
+    int duracion[5];
 };
 int main ()
 {
     BITMAP *buffer,*bmp,*bmp2,*notas;
+    float x;
     struct Nota c1;
     int i=0;
-    for(i=0;i<=15;i++){
+    for(i=0;i<5;i++){
     printf("\nIngresar frecuencia: ");
     scanf("%f",&c1.notas[i]);
+    printf("\nIngresar frecuencia: ");
+    scanf("%d",&c1.duracion[i]);
     }
     allegro_init();
     install_keyboard();
@@ -31,8 +35,10 @@ int main ()
     clear_to_color(buffer, 0x999999);
     blit(bmp,buffer,0,0,0,0,1000,667);
     blit(bmp2,buffer,-25,-70,0,0,500,375);
-    if(c1.notas[i]==440){
-    blit(notas,buffer,0,0,100,130,21,43);
+    for(i=0;i<5;i++){
+    if(c1.notas[i]>=261.62 && c1.notas[i]<293.664){
+    blit(notas,buffer,0,0,100,170,21,43);
+    }
     }
     blit(buffer, screen, 0, 0, 0, 0, 1000, 530);
     readkey();
