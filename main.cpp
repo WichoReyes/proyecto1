@@ -1,18 +1,19 @@
 #include <allegro.h>
 #include <stdio.h>
 #include <iostream>
+
 using namespace std;
 struct Nota
 {
-    float notas[3][3];
+    float notas[8][3];
     int duracion[8];
 };
 int main ()
 {
     BITMAP *buffer,*bmp,*bmp2,*notas;
-    //int readkey();
     struct Nota c1;
-    int i=0,j=100, numero;
+    char n;
+    int i=0,j=0,x=100, numero;
 
     allegro_init();
     install_keyboard();
@@ -34,36 +35,37 @@ int main ()
     blit(bmp2,buffer,-25,-70,0,0,500,375);
     blit(buffer, screen, 0, 0, 0, 0, 1000, 530);
 
-    for(i=0; i<=1; i++){
+    for(i=0; i<=7; i++){
         for(j=0; j<=2; j++){
-            if((readkey()&0xff)=='0'){
+            n=readkey()&0xff;
+            if(n=='0'){
             c1.notas[i][j]=0;
             }
-            else if((readkey()&0xff)=='1'){
+            else if(n=='1'){
             c1.notas[i][j]=1;
             }
-            else if((readkey()&0xff)=='2'){
+            else if(n=='2'){
             c1.notas[i][j]=2;
             }
-            else if((readkey()&0xff)=='3'){
+            else if(n=='3'){
             c1.notas[i][j]=3;
             }
-            else if((readkey()&0xff)=='4'){
+            else if(n=='4'){
             c1.notas[i][j]=4;
             }
-            else if((readkey()&0xff)=='5'){
+            else if(n=='5'){
             c1.notas[i][j]=5;
             }
-            else if((readkey()&0xff)=='6'){
+            else if(n=='6'){
             c1.notas[i][j]=6;
             }
-            else if((readkey()&0xff)=='7'){
+            else if(n=='7'){
             c1.notas[i][j]=7;
             }
-            else if((readkey()&0xff)=='8'){
+            else if(n=='8'){
             c1.notas[i][j]=8;
             }
-            else if((readkey()&0xff)=='9'){
+            else if(n=='9'){
             c1.notas[i][j]=9;
             }
         }
@@ -71,36 +73,36 @@ int main ()
         cout<<numero;
 
         if(numero>=261.6 && numero<293.6){  //do
-        blit(notas,buffer,0,0,j,170,21,43);
-        j=j+30;
+        blit(notas,buffer,0,0,x,170,21,43);
+        x=x+30;
         }
         else if(numero>=293.6 && numero<329.6){  //re
-        blit(notas,buffer,0,0,j,165,21,43);
-        j=j+30;
+        blit(notas,buffer,0,0,x,165,21,43);
+        x=x+30;
         }
         else if(numero>=329.6 && numero<349.2){  //mi
-        blit(notas,buffer,0,0,j,160,21,43);
-        j=j+30;
+        blit(notas,buffer,0,0,x,160,21,43);
+        x=x+30;
         }
         else if(numero>=349.2 && numero<391.9){  //fa
-        blit(notas,buffer,0,0,j,150,21,43);
-        j=j+30;
+        blit(notas,buffer,0,0,x,150,21,43);
+        x=x+30;
         }
         else if(numero>=391.9 && numero<440){  //sol
-        blit(notas,buffer,0,0,j,140,21,43);
-        j=j+30;
+        blit(notas,buffer,0,0,x,140,21,43);
+        x=x+30;
         }
         else if(numero>=440 && numero<493.8){  //la
-        blit(notas,buffer,0,0,j,130,21,43);
-        j=j+30;
+        blit(notas,buffer,0,0,x,130,21,43);
+        x=x+30;
         }
         else if(numero>=493.8 && numero<523.2){  //si
-        blit(notas,buffer,0,0,j,125,21,43);
-        j=j+30;
+        blit(notas,buffer,0,0,x,125,21,43);
+        x=x+30;
         }
         else if(numero>=523.2){  //do
-        blit(notas,buffer,0,0,j,115,21,43);
-        j=j+30;
+        blit(notas,buffer,0,0,x,115,21,43);
+        x=x+30;
         }
         blit(buffer, screen, 0, 0, 0, 0, 1000, 530);
         //readkey();
@@ -108,15 +110,15 @@ int main ()
 
     }
 
-    //readkey();
+    readkey();
     //destroy_bitmap(buffer);
 
-    for(i=0;i<3;i++){
+    /*for(i=0;i<3;i++){
     numero=c1.notas[i][0]*100+c1.notas[i][1]*10+c1.notas[i][2];
-    /*printf("\nIngresar frecuencia: ");
+    printf("\nIngresar frecuencia: ");
     scanf("%f",&c1.notas[i]);
     printf("\nIngresar duracion: ");
-    scanf("%d",&c1.duracion[i]);*/
+    scanf("%d",&c1.duracion[i]);
 
     if(numero>=261.6 && numero<293.6){  //do
     blit(notas,buffer,0,0,j,170,21,43);
@@ -153,7 +155,7 @@ int main ()
     blit(buffer, screen, 0, 0, 0, 0, 1000, 530);
     readkey();
     destroy_bitmap(buffer);
-    }
+    }*/
     return 0;
 }
 END_OF_MAIN ()
