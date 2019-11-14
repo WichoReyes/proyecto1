@@ -25,7 +25,7 @@ int main ()
     blit(bmp2,buffer,0,0,200,150,640,194);
     blit(boton,buffer,0,0,180,400,100,93);
     while(!botoon){
-    if(mouse_x > 178 && mouse_x < 280 && mouse_y > 535 && mouse_y < 630){
+    if(mouse_x > 178 && mouse_x < 280 && mouse_y > 400 && mouse_y < 500){
          if(mouse_b & 1){
             botoon=true;
             }
