@@ -12,15 +12,12 @@ struct Nota
 };
 int main ()
 {
-    BITMAP *buffer,*bmp,*bmp2,*notas,*boton, *cursor, *blanca,*redonda,*corchea,*bmp3;
+    BITMAP *buffer,*bmp,*bmp2,*notas,*boton, *cursor, *blanca,*redonda,*corchea,*bmp3, *titulo, *mensaje;
     bool botoon=false;
-    ofstream file;
-    vector <Nota> NotaI;
-    vector <Nota> NotaO;
     char n,f;
     int i=0,j=0,x=350, numero,duracion, k=0,numero1,numero2,numero3,numero4,numero5,numero6,numero7,
     duracion1,duracion2,duracion3,duracion4,duracion5,duracion6,duracion7,duracionnew=500;
-    struct Nota c1,NotaU;
+    struct Nota c1;
     float n0,n1,n2,n3,n4,n5,n6,n7;
     allegro_init();
     install_keyboard();
@@ -42,12 +39,13 @@ int main ()
     cursor = load_bitmap("cursor.bmp",NULL);
     redonda = load_bitmap("redonda.bmp",NULL);
     corchea = load_bitmap("corchea.bmp",NULL);
-
+    titulo = load_bitmap("titulo.bmp",NULL);
+    mensaje = load_bitmap("mensaje.bmp",NULL);
     while(!key[KEY_ESC])
     {
         blit(bmp3,buffer,0,0,0,0,1000,667);
-        textout_centre_ex(buffer, font, "A.- Introducir notas manualmente", 530/2, 100, 0xFFFFFF, 0x333333);
-        textout_centre_ex(buffer, font, "B.- Introducir notas por un archivo", 530/2, 110, 0xFFFFFF, 0x333333);
+        blit(titulo,buffer,0,0,250,50,596,157);
+        blit(mensaje,buffer,0,0,250,300,583,92);
         blit(buffer, screen, 0, 0, 0, 0, 1000, 530);
         readkey();
         if(key[KEY_A])
@@ -55,7 +53,22 @@ int main ()
             blit(bmp,buffer,0,0,0,0,1000,667);
             blit(bmp2,buffer,0,0,200,150,640,194);
             blit(boton,buffer,0,0,180,400,100,93);
+             textout_centre_ex(buffer, font, "Frecuencias", 300, 10, 0xFFFFFF, 0xDF1680);
+             textout_centre_ex(buffer, font, "Do  262 -- 293", 300, 25, 0xFFFFFF, 0xDF1680);
+             textout_centre_ex(buffer, font, "Re  294 -- 329", 300, 35, 0xFFFFFF, 0xDF1680);
+             textout_centre_ex(buffer, font, "Mi  330 -- 349", 300, 45, 0xFFFFFF, 0xDF1680);
+             textout_centre_ex(buffer, font, "Fa  350 -- 391", 300, 55, 0xFFFFFF, 0xDF1680);
+             textout_centre_ex(buffer, font, "Sol 392 -- 439", 300, 65, 0xFFFFFF, 0xDF1680);
+             textout_centre_ex(buffer, font, "La  440 -- 493", 300, 75, 0xFFFFFF, 0xDF1680);
+             textout_centre_ex(buffer, font, "Si  494 -- 523", 300, 85, 0xFFFFFF, 0xDF1680);
+             textout_centre_ex(buffer, font, "Do  524", 300, 95, 0xFFFFFF, 0xDF1680);
+             textout_centre_ex(buffer, font, "Duraciones", 650, 10, 0xFFFFFF, 0xDF1680);
+             textout_centre_ex(buffer, font, "10 -- 1 segundo", 650, 25, 0xFFFFFF, 0xDF1680);
+             textout_centre_ex(buffer, font, "20 -- 2 segundos", 650, 35, 0xFFFFFF, 0xDF1680);
+             textout_centre_ex(buffer, font, "40 -- 4 segundos", 650, 45, 0xFFFFFF, 0xDF1680);
+             textout_centre_ex(buffer, font, "50 -- medio segundo", 650, 55, 0xFFFFFF, 0xDF1680);
 
+            blit(buffer, screen, 0, 0, 0, 0, 1000, 530);
 
             for(i=0; i<=7; i++)
             {
@@ -1857,59 +1870,7 @@ int main ()
             readkey();
             destroy_bitmap(buffer);
         }
-        else if(key[KEY_B])
-        {
-            blit(bmp,buffer,0,0,0,0,1000,667);
-            blit(bmp2,buffer,0,0,200,150,640,194);
-            blit(boton,buffer,0,0,180,400,100,93);
-            char cadena[128];
-   ifstream fe("frecuencias.txt");
 
-   while(!fe.eof()) {
-      fe >> cadena;
-      cout << cadena << endl;
-   }
-
-/*            if(cadena>=261.6 && cadena<293.6)   //do
-        {
-            blit(notas,buffer,0,0,x,270,21,43);
-            x=x+30;
-        }
-        else if(cadena>=293.6 && cadena<329.6)
-        {
-            blit(notas,buffer,0,0,x,260,21,43);
-            x=x+30;
-        }
-        else if(cadena>=329.6 && cadena<349.2)
-        {
-            blit(notas,buffer,0,0,x,250,21,43);
-            x=x+30;
-        }
-        else if(cadena>=349.2 && cadena<391.9)
-        {
-            blit(notas,buffer,0,0,x,240,21,43);
-            x=x+30;
-        }
-        else if(cadena>=391.9 && cadena<440)
-        {
-            blit(notas,buffer,0,0,x,230,21,43);
-            x=x+30;
-        }
-        else if(cadena>=440 && cadena<493.8)
-        {
-            blit(notas,buffer,0,0,x,220,21,43);
-            x=x+30;
-        }
-        else if(cadena>=493.8 && cadena<523.2)
-        {
-            blit(notas,buffer,0,0,x,210,21,43);
-            x=x+30;
-        }
-        else if(cadena>=523.2)
-        {
-            blit(notas,buffer,0,0,x,200,21,43);
-            x=x+30;
-        } */
         blit(buffer, screen, 0, 0, 0, 0, 1000, 530);
     while(!botoon)
             {
@@ -1922,9 +1883,7 @@ int main ()
                     }
                 }
             }
-            fe.close();
 
-    }
 
         }
     return 0;
